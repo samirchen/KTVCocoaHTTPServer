@@ -756,7 +756,9 @@ static NSThread *bonjourThread;
 	
 	NSAssert([NSThread currentThread] == bonjourThread, @"Executed on incorrect thread");
 	
-	block();
+    if (block) {
+        block();
+    }
 }
 
 + (void)performBonjourBlock:(dispatch_block_t)block
